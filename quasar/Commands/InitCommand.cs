@@ -42,16 +42,16 @@ namespace quasar.Commands
 
                     if (process.ExitCode == 0)
                     {
-                        Console.WriteLine("Blazor WebAssembly project created successfully.");
+                        Console.WriteLine("Empty web project created successfully.");
                     }
                     else
                     {
-                        Console.Error.WriteLine("Error creating Blazor WebAssembly project.");
+                        Console.Error.WriteLine("Error creating empty web project.");
                     }
                 }
             }catch(Exception ex)
             {
-                Console.Error.WriteLine("Error creating Blazor WebAssembly project.", ex);
+                Console.Error.WriteLine("Error creating empty web project.", ex);
             }
 
             var command2 = "cd";
