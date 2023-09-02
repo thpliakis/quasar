@@ -53,8 +53,39 @@ namespace quasar.Commands
             {
                 Console.Error.WriteLine("Error creating Blazor WebAssembly project.", ex);
             }
-            // Create and add default files or content to the project folder
-            //File.WriteAllText(Path.Combine(projectName, "README.txt"), $"Welcome to {projectName}!");
+
+            var command2 = "cd";
+            var arguments2 = $"{projectName}";
+
+            processInfo = new ProcessStartInfo
+            {
+                FileName = command2,
+                Arguments = arguments2,
+                RedirectStandardOutput = true,
+                RedirectStandardError = true,
+                UseShellExecute = false,
+                CreateNoWindow = true
+            };
+            try
+            {
+                using var process = new Process();
+                process.StartInfo = processInfo;
+                process.Start();
+                process.WaitForExit();
+
+                if (process.ExitCode == 0)
+                {
+                    Console.WriteLine("Changed directory successfully.");
+                }
+                else
+                {
+                    Console.Error.WriteLine("Error changing directory.");
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.Error.WriteLine("Error changing directory.", ex);
+            }
 
             Console.WriteLine($"Project '{projectName}' initialized with default content.");
         }
