@@ -8,7 +8,7 @@ namespace quasar.Commands
         private readonly Argument? projectNameArgument;
         //private readonly InitHandler initHandler;
 
-        public InitCommand() : base("init", "Initialize a new project") 
+        public InitCommand() : base("init", "Initialize a new project and start writting latex") 
         {
             var projectNameArgument = new Argument<string>("projectName", "Name of the project folder");
             AddArgument(projectNameArgument);
@@ -21,7 +21,7 @@ namespace quasar.Commands
             //Directory.CreateDirectory(projectName);
 
             var command = "dotnet";
-            var arguments = $"new blazorwasm -n {projectName}";
+            var arguments = $"new web -n {projectName}";
 
             var processInfo = new ProcessStartInfo
             {
