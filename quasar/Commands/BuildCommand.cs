@@ -37,17 +37,17 @@ namespace quasar.Commands
 
                     if (process.ExitCode == 0)
                     {
-                        Console.WriteLine("Blazor WebAssembly project built successfully.");
+                        Console.WriteLine("Project built successfully.");
                     }
                     else
                     {
-                        Console.Error.WriteLine("Error building Blazor WebAssembly project.");
+                        Console.Error.WriteLine("Error building project.");
                     }
                 }
             }
             catch (Exception ex)
             {
-                Console.Error.WriteLine("Error building Blazor WebAssembly project.", ex);
+                Console.Error.WriteLine("Error building project.", ex);
             }
 
             Console.WriteLine($"Project built successfully.");
