@@ -11,9 +11,11 @@ namespace quasar
             var initCommand = new InitCommand();
             var buildCommand = new BuildCommand();
             var runCommand = new RunCommand();
+            var infoCOmmand = new InfoCommand();
             rootCommand.Add(initCommand);
             rootCommand.Add(buildCommand);
             rootCommand.Add(runCommand);
+            rootCommand.Add(infoCOmmand);
 
             return rootCommand.Invoke(args);
         }
