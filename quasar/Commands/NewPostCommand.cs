@@ -30,6 +30,19 @@ namespace quasar.Commands
             // TODO!!!
             string configFilePath = "config.yaml";
 
+            // Data to be written to the YAML file
+            var data = new Config
+            {
+                author = "Author",
+                firstname = "Your name",
+                lastname = "Your last name"
+            };
+
+            // Write data to the YAML file
+            WriteYamlFile(data, configFilePath);
+
+            Console.WriteLine("YAML file created successfully.");
+
             try
             {
                 // Read the YAML file using YamlDotNet
@@ -54,9 +67,29 @@ namespace quasar.Commands
 
         }
 
+        static void WriteYamlFile<T>(T data, string filePath)
+        {
+            try
+            {
+                // Create a serializer
+                var serializer = new SerializerBuilder().Build();
+
+                // Serialize the data to YAML
+                string yamlContent = serializer.Serialize(data);
+
+                // Write the YAML content to the file
+                File.WriteAllText(filePath, yamlContent);
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine("Error writing the YAML file: " + e.Message);
+            }
+        }
+
         public class Config
         {
             public string author { get; set; }
+
             public string firstname { get; set; }
             public string lastname { get; set; }
         }
