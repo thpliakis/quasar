@@ -1,16 +1,16 @@
 ﻿namespace quasar.BlogPostTemplate
 {
-    public class PostGenerator
+    public class NewPostGenerator
     {
         private readonly string templatePath;
         private readonly string outputPath;
         private readonly string customTitle;
         private readonly string customAuthor;
 
-        public PostGenerator(string templatePath, string outputPath, string customTitle, string customAuthor)
+        public NewPostGenerator(string outputPath, string customTitle, string customAuthor)
         {
-            this.templatePath = templatePath;
-            this.outputPath = outputPath;
+            this.templatePath = "PostTemplate.tex"; //templatePath;
+            this.outputPath = "MyCustomPost.tex";// outputPath;
             this.customTitle = customTitle;
             this.customAuthor = customAuthor;
         }
