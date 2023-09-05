@@ -10,7 +10,7 @@
         public NewPostGenerator(string outputPath, string customTitle, string customAuthor)
         {
             this.templatePath = "PostTemplate.tex"; //templatePath;
-            this.outputPath = "MyCustomPost.tex";// outputPath;
+            this.outputPath = outputPath;
             this.customTitle = customTitle;
             this.customAuthor = customAuthor;
         }
