@@ -13,11 +13,13 @@ namespace quasar
             var runCommand = new RunCommand();
             var infoCommand = new InfoCommand();
             var newpostCommand = new NewPostCommand();
+            var publishCommand = new PublishPostCommand();
             rootCommand.Add(initCommand);
             rootCommand.Add(buildCommand);
             rootCommand.Add(runCommand);
             rootCommand.Add(infoCommand);
             rootCommand.Add(newpostCommand);
+            publishCommand.Add(publishCommand);
 
             return rootCommand.Invoke(args);
         }
