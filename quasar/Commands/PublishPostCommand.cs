@@ -13,7 +13,8 @@ namespace quasar.Commands
 
         public static void PublishPost(string projectName)
         {
-
+            // Todo convert from latex to html with pandoc
+            // add html file to posts folder
         }
 
     }
