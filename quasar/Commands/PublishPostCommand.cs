@@ -17,7 +17,7 @@ namespace quasar.Commands
             // Todo convert from latex to html with pandoc
             // add html file to posts folder
             ConvertLatexToHtml(postNameArgument);
-
+            Console.WriteLine("site generation complete.");
         }
 
         public void ConvertLatexToHtml(string sourceDirectory)
@@ -74,8 +74,6 @@ namespace quasar.Commands
 
                 Console.WriteLine($"Converted '{latexFile}' to '{htmlPath}'");
             }
-
-            Console.WriteLine("Static site generation complete.");
         }
     }
 }
