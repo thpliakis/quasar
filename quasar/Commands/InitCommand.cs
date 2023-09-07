@@ -93,7 +93,7 @@ namespace quasar.Commands
             Console.WriteLine($"Project '{projectName}' initialized with default content.");
         }
 
-        public int CopyTemplate(string projectName)
+        public static int CopyTemplate(string projectName)
         {
             if (string.IsNullOrWhiteSpace(projectName))
             {
@@ -115,6 +115,19 @@ namespace quasar.Commands
             Console.WriteLine($"Project '{projectName}' has been created in '{Directory.GetCurrentDirectory()}'.");
 
             return 0;
+        }
+
+        private static void CopyDirectory(string sourceDir, string destDir)
+        {
+            Directory.CreateDirectory(destDir);
+
+            foreach (var file in Directory.GetFiles(sourceDir, "*", SearchOption.AllDirectories))
+            {
+                string relativePath = Path.GetRelativePath(sourceDir, file);
+                string destFile = Path.Combine(destDir, relativePath);
+                Directory.CreateDirectory(Path.GetDirectoryName(destFile));
+                File.Copy(file, destFile);
+            }
         }
     }
 }
