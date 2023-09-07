@@ -21,7 +21,7 @@ namespace quasar.Commands
             //Directory.CreateDirectory(projectName);
 
             var command = "dotnet";
-            var arguments = $"new web -n {projectName}";
+            var arguments = $"new webapp -n {projectName}";
 
             var processInfo = new ProcessStartInfo
             {
