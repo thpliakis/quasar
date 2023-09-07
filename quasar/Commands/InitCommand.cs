@@ -129,5 +129,12 @@ namespace quasar.Commands
                 File.Copy(file, destFile);
             }
         }
+
+        private static string GetTemplateDirectory()
+        {
+            var assembly = System.Reflection.Assembly.GetExecutingAssembly();
+            var assemblyDirectory = System.IO.Path.GetDirectoryName(assembly.Location);
+            return Path.Combine(assemblyDirectory, "templates");
+        }
     }
 }
