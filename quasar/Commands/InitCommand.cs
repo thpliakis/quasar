@@ -20,6 +20,9 @@ namespace quasar.Commands
             // Logic to create the project folder and add default content
             //Directory.CreateDirectory(projectName);
 
+            // !!!! If i use the whole default template this command must be removed.
+            // !!!! If i use parts of the default template i must use this command.
+
             var command = "dotnet";
             var arguments = $"new webapp -n {projectName}";
 
@@ -88,6 +91,30 @@ namespace quasar.Commands
             }
 
             Console.WriteLine($"Project '{projectName}' initialized with default content.");
+        }
+
+        public int CopyTemplate(string projectName)
+        {
+            if (string.IsNullOrWhiteSpace(projectName))
+            {
+                Console.WriteLine("Please provide a project name.");
+                return 1;
+            }
+
+            string templatePath = Path.Combine(GetTemplateDirectory(), "MyDefaultProject");
+            string destinationPath = Path.Combine(Directory.GetCurrentDirectory(), projectName);
+
+            if (Directory.Exists(destinationPath))
+            {
+                Console.WriteLine($"The directory '{projectName}' already exists.");
+                return 1;
+            }
+
+            CopyDirectory(templatePath, destinationPath);
+
+            Console.WriteLine($"Project '{projectName}' has been created in '{Directory.GetCurrentDirectory()}'.");
+
+            return 0;
         }
     }
 }
