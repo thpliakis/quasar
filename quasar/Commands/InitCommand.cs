@@ -117,23 +117,39 @@ namespace quasar.Commands
             return 0;
         }
 
+        // CopyDirectory method copies the entire directory structure from the source directory to the destination directory.
         private static void CopyDirectory(string sourceDir, string destDir)
         {
+            // Create the destination directory if it doesn't exist already.
             Directory.CreateDirectory(destDir);
 
+            // Iterate through all files in the source directory and its subdirectories.
             foreach (var file in Directory.GetFiles(sourceDir, "*", SearchOption.AllDirectories))
             {
+                // Determine the relative path of the file within the source directory.
                 string relativePath = Path.GetRelativePath(sourceDir, file);
+
+                // Combine the relative path with the destination directory to create the full destination path.
                 string destFile = Path.Combine(destDir, relativePath);
+
+                // Ensure that the directory structure leading to the destination file exists.
                 Directory.CreateDirectory(Path.GetDirectoryName(destFile));
+
+                // Copy the file from the source location to the destination location.
                 File.Copy(file, destFile);
             }
         }
 
+        // GetTemplateDirectory method retrieves the directory containing the template files.
         private static string GetTemplateDirectory()
         {
+            // Get the assembly (executable) that contains this code.
             var assembly = System.Reflection.Assembly.GetExecutingAssembly();
+
+            // Get the directory where the assembly is located.
             var assemblyDirectory = System.IO.Path.GetDirectoryName(assembly.Location);
+
+            // Combine the assembly directory with the "templates" subdirectory to get the template directory.
             return Path.Combine(assemblyDirectory, "templates");
         }
     }
